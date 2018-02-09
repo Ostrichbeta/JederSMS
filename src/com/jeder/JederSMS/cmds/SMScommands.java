@@ -3,6 +3,7 @@ import com.jeder.JederSMS.Main;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import java.util.Date;
 import java.util.Random;
 
 public class SMScommands implements CommandExecutor {
@@ -61,10 +62,38 @@ public class SMScommands implements CommandExecutor {
                 }
                 //開始設定訊息
                 plugin.getConfig().set( "Messages." + String.valueOf( smsCode ) + ".sender" , sender.getName() );
-                plugin.getConfig().set( "Messages." + String.valueOf( smsCode ) + ".reciever" , args[1] );
+                plugin.getConfig().set( "Messages." + String.valueOf( smsCode ) + ".receiver" , args[1] );
                 plugin.getConfig().set( "Messages." + String.valueOf( smsCode ) + ".messages" , args[2] );
+                //設定一個訊息自動刪除的日期
+                Date d = new Date() ;
+                long time = d.getTime();
+                time = time + 604800000;
+                //加上七天的時間
+                plugin.getConfig().set( "Messages." + String.valueOf( smsCode ) + ".deleteDate" , time );
+                //加入刪除的日期
+                plugin.saveConfig();
+                //保存配置文檔
                 return true;
             }
+        }
+
+        if ( args[0].toLowerCase().equals( "receive" ) ) {
+            if ( args.length <= 1 ) {
+                //當僅輸入/sms receive時
+                sender.sendMessage( "用法: /sms receive <簡訊號> " );
+                return true;
+            }
+            else {
+                if ( plugin.getConfig().getString( "Messages." + args[1] ).isEmpty() ){
+                    //當沒有這一條訊息時
+                    sender.sendMessage( "§e找不到這一條訊息，請確認您輸入的簡訊號是否有誤" );
+                    return true;
+                }
+                else{
+                    sender.sendMessage( "--------=Jeder簡訊業務=--------" );
+                }
+            }
+            return true;
         }
         return false;
     }

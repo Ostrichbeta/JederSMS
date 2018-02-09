@@ -6,14 +6,14 @@ commands:
   jederSMS:
     aliases: [sms]
     description: jederSMS Main Command
-    usage: /jederSMS <send|open|help|version|info> {...}
+    usage: /jederSMS <send|receive|help|version|info> {...}
 
 permissions:
   jederSMS.*:
     description: The highest permission of the plugin
     children:
       jederSMS.send: true
-      jederSMS.recieve: true
+      jederSMS.receive: true
       jederSMS.msglist: true
       jederSMS.delete: true
       jederSMS.superDelete: true
@@ -22,8 +22,8 @@ permissions:
     description: The permission to send the message
     default: true
 
-  jederSMS.recieve:
-    description: The permission to recieve the message
+  jederSMS.receive:
+    description: The permission to receive the message
     default: true
 
   jederSMS.msglist:
