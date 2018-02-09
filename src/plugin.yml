@@ -1,0 +1,39 @@
+name: JederSMS
+description: An SMS Plugin
+version: 1.0
+author: Ostrichbeta Chan
+commands:
+  jederSMS:
+    aliases: [sms]
+    description: jederSMS Main Command
+    usage: /jederSMS <send|open|help|version|info> {...}
+
+permissions:
+  jederSMS.*:
+    description: The highest permission of the plugin
+    children:
+      jederSMS.send: true
+      jederSMS.recieve: true
+      jederSMS.msglist: true
+      jederSMS.delete: true
+      jederSMS.superDelete: true
+
+  jederSMS.send:
+    description: The permission to send the message
+    default: true
+
+  jederSMS.recieve:
+    description: The permission to recieve the message
+    default: true
+
+  jederSMS.msglist:
+    description: The permission to show the list of message
+    default: false
+
+  jederSMS.delete:
+    description: The permission to delete the message
+    default: true
+
+  jederSMS.superDelete:
+    description: The permission to delete all the message
+    default: op
