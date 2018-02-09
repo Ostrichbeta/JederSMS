@@ -21,6 +21,9 @@ public class SMScommands implements CommandExecutor {
             sender.sendMessage("I don't know what do you want to do.");
             return false;
         }
+        if ( args[0].toLowerCase().equals( "info" ) ) {
+            return false;
+        }
         return false;
     }
 
