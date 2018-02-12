@@ -91,9 +91,14 @@ public class SMScommands implements CommandExecutor {
                 }
                 else{
                     sender.sendMessage( "--------=Jeder簡訊業務=--------" );
+                    sender.sendMessage( "簡訊代號： §e§l" + args[1] );
+                    sender.sendMessage( "簡訊內容：" );
+                    sender.sendMessage( plugin.getConfig().getString( "Messages." + args[1] + ".messages" ) );
+                    //消息發送完成
+                    return true ;
                 }
             }
-            return true;
+            //return true;
         }
         return false;
     }
