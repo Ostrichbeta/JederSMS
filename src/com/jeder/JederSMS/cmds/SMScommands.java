@@ -58,7 +58,7 @@ public class SMScommands implements CommandExecutor {
 
                         break;
                     }
-                    plugin.getLogger().info( "§e嘗試使用§b§l " + String.valueOf( smsCode ) + " §e作為簡訊號時被占用，將重新生成一個 " ); ;
+                    plugin.getLogger().info( "§e嘗試使用§b§l " + String.valueOf( smsCode ) + " §e作為簡訊號時被占用，將重新生成一個 " );
                 }
                 //開始設定訊息
                 plugin.getConfig().set( "Messages." + String.valueOf( smsCode ) + ".sender" , sender.getName() );
@@ -84,7 +84,7 @@ public class SMScommands implements CommandExecutor {
                 return true;
             }
             else {
-                if ( plugin.getConfig().getString( "Messages." + args[1] ).isEmpty() ){
+                if ( !plugin.getConfig().isString( "Messages." + args[1] ) ){
                     //當沒有這一條訊息時
                     sender.sendMessage( "§e找不到這一條訊息，請確認您輸入的簡訊號是否有誤" );
                     return true;
